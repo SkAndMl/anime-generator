@@ -7,23 +7,25 @@ import matplotlib.pyplot as plt
 import numpy as np
 import random
 
-# initialize model and params
-print(f"Initializing generator")
-device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-net_g = Generator(nz, nc, ngf).to(device)
-net_g.load_state_dict(torch.load("checkpoints/animegan.pt", map_location=device)['net_g'])
-
-print("Initialized model. Ready for inference...")
-
 # add batch size and image saving location to the cli
 parser = argparse.ArgumentParser()
 parser.add_argument("--bs", type=int, default=64)
 parser.add_argument("--img_path", type=str, required=True)
 parser.add_argument("--seed", type=int, default=None)
+parser.add_argument("--cp_dir", type=str, required=True)
 args = parser.parse_args()
 bs = args.bs
 img_path = args.img_path
 seed = args.seed
+cp_dir = args.cp_dir
+
+# initialize model and params
+print(f"Initializing generator")
+device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+net_g = Generator(nz, nc, ngf).to(device)
+net_g.load_state_dict(torch.load(cp_dir, map_location=device)['net_g'])
+
+print("Initialized model. Ready for inference...")
 
 # create folder if it does not exist
 os.makedirs(os.path.dirname(img_path), exist_ok=True)

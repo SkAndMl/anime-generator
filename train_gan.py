@@ -1,3 +1,4 @@
+import argparse
 import torch
 from torch import nn
 from torch.utils.data import DataLoader
@@ -92,6 +93,9 @@ if __name__ == "__main__":
 
     print(f"training will happen on device: {device}")
 
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--cp_dir", type=str, default="checkpoints/animegan.pt")
+    args = parser.parse_args()
     # create model, optimizers and loss fn
     net_g = Generator(nz, nc, ngf).to(device)
     net_g.apply(weights_init)
@@ -183,5 +187,5 @@ if __name__ == "__main__":
     print("Saving the models...")
     if not os.path.exists("checkpoints"):
         os.mkdir("checkpoints")
-    torch.save(obj={"net_g": net_g.state_dict(), "net_d": net_d.state_dict()}, f="checkpoints/animegan.pt")
-    print("Model saved to 'checkpoints/animegan.pt'")
+    torch.save(obj={"net_g": net_g.state_dict(), "net_d": net_d.state_dict()}, f=args.cp_dir)
+    print(f"Model saved to '{args.cp_dir}'")
