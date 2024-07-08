@@ -30,3 +30,8 @@ python3.11 inference.py --bs 64 --img_path "parent_folder/example.jpg" --seed 12
 ```bash
 streamlit run app.py
 ```
+
+## examples
+<img src="examples/sample_1.jpg" width="500px" height="500px"/>
+<img src="examples/sample_2.jpg" width="500px" height="500px"/>
+<img src="examples/sample_3.jpg" width="500px" height="500px"/>
