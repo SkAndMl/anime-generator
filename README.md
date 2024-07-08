@@ -32,6 +32,9 @@ streamlit run app.py
 ```
 
 ## examples
-<img src="examples/sample_1.jpg" width="500px" height="500px"/>
-<img src="examples/sample_2.jpg" width="500px" height="500px"/>
+**example 1** <br>
+<img src="examples/sample_1.jpg" width="500px" height="500px"/><br>
+**example 2** <br>
+<img src="examples/sample_2.jpg" width="500px" height="500px"/><br>
+**example 3** <br>
 <img src="examples/sample_3.jpg" width="500px" height="500px"/>
